@@ -16,6 +16,14 @@ class HeaderDesktop extends StatelessWidget {
               vertical: 10.0,
               horizontal: 20.0),
             width: double.maxFinite,
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.horizontal(
+                right: Radius.elliptical(15.0,15.0),
+                left: Radius.elliptical(15, 15.0)),
+              gradient: LinearGradient(colors: [
+                Colors.black,
+                Color.fromARGB(219, 11, 0, 82)])
+            ),
            
             child: Row(
               children: [

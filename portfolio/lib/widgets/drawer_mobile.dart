@@ -8,7 +8,7 @@ class DrawerMobile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-        backgroundColor: CustomColor.scafffoldBg,
+        backgroundColor: Colors.black,
         child: ListView(
           children: [
             Align(

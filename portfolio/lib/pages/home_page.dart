@@ -1,13 +1,12 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 import 'package:portfolio/constants/colors.dart';
-import 'package:portfolio/constants/nav_items.dart';
 import 'package:portfolio/constants/size.dart';
 import 'package:portfolio/widgets/drawer_mobile.dart';
 import 'package:portfolio/widgets/header_desktop.dart';
 import 'package:portfolio/widgets/header_mobile.dart';
+import 'package:portfolio/widgets/main_desk.dart';
+import 'package:portfolio/widgets/main_mobile.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -23,11 +22,16 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    // ignore: unused_local_variable
+    final screenSize = MediaQuery.of(context).size;
+    final screenWidth = screenSize.width;
+    // final screenHeight = screenSize.height;
+
     return  LayoutBuilder(
       builder: (context, constraints) {
         return Scaffold(
           key: _scaffoldKey,
-          backgroundColor: CustomColor.scafffoldBg,
+          backgroundColor: const Color.fromARGB(255, 0, 0, 0),
           endDrawer: constraints.maxWidth >= minDesktopWidth? null : const DrawerMobile(),
           body: ListView(
             scrollDirection: Axis.vertical,
@@ -41,11 +45,48 @@ class _HomePageState extends State<HomePage> {
                 _scaffoldKey.currentState?.openEndDrawer();
               },
              ),
+
+               if(constraints.maxWidth >= minDesktopWidth)
+               const MainDesk() else
+               const MainMobile(),
               //SKILLS
               Container(
-                height: 500,
-                width: double.maxFinite,
-                color: Colors.blueGrey,
+                width: screenWidth,
+                padding: const EdgeInsets.fromLTRB(25, 20, 25, 60),
+                color: const Color.fromARGB(219, 11, 0, 82),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    //title
+                    Text("What I can do",
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: CustomColor.whitePrimary,
+                    ),
+                  ),
+                  //platforn
+                  Row(
+                    children: [
+                      //platforms
+                      Wrap(
+                        children: [
+                          Container(
+                            width: 200,
+                            decoration: BoxDecoration(
+                              color: Colors.blueGrey,
+                              borderRadius: BorderRadius.circular(5), 
+                            ),
+                            child: ListTile(
+                              leading: Image.asset(""),
+                              title: Text(""),),
+                          )
+                        ],)
+                    ],),
+                  
+
+                  ],
+                ),
               ),
               //PROJECTS
               Container(
@@ -57,7 +98,7 @@ class _HomePageState extends State<HomePage> {
               Container(
                 height: 500,
                 width: double.maxFinite,
-                color: Colors.blueGrey,
+                color: const Color.fromARGB(219, 11, 0, 82),
               ),
               //FOOTER
               Container(
